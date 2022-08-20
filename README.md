@@ -1,0 +1,2 @@
+# Huaweiyun_Auxiliary_Diagnostic
+Auxiliary Diagnostic System
