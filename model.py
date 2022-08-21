@@ -10,8 +10,12 @@ class BaselineModel(nn.Module):
             param.requires_grad = True
         self.dropout = nn.Dropout(0.5)
         # self.fc = nn.Linear(768, 52)
-        self.fc1 = nn.Linear(1024, 128)
-        self.fc2 = nn.Linear(128, 52)
+        # small model
+        self.fc1 = nn.Linear(768, 192)
+        self.fc2 = nn.Linear(192, 52)
+        # big model
+        # self.fc1 = nn.Linear(1024, 128)
+        # self.fc2 = nn.Linear(128, 52)
 
     def forward(self, text, mask):
         bert_out = self.bert(text, attention_mask=mask)[1]
@@ -24,6 +28,4 @@ class BaselineModel(nn.Module):
 
 if __name__ == "__main__":
     model = BaselineModel()
-
     print(model)
-    # summary(model, input_size=[(1, 3072)], batch_size=32, device="cpu")
